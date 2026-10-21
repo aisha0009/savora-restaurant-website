@@ -1,0 +1,1650 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Savora | Fine Dining Restaurant</title>
+
+<style>
+:root {
+    --green: #173c32;
+    --green-light: #285849;
+    --cream: #f8f5ed;
+    --gold: #c6a35a;
+    --text: #292d29;
+    --muted: #777970;
+    --white: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    line-height: 1.7;
+}
+
+img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button, input, textarea, select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+header {
+    background: var(--green);
+    color: var(--white);
+    padding: 15px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 3px 15px #00000018;
+}
+
+.logo {
+    font-family: Georgia, serif;
+    font-size: 29px;
+    font-weight: bold;
+    color: var(--gold);
+    letter-spacing: 2px;
+    white-space: nowrap;
+}
+
+.logo span {
+    display: block;
+    font-family: Arial, sans-serif;
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: var(--white);
+    text-align: center;
+    margin-top: -5px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 19px;
+}
+
+nav a {
+    color: var(--white);
+    font-size: 13px;
+    transition: color .3s;
+}
+
+nav a:hover {
+    color: var(--gold);
+}
+
+.nav-button {
+    background: var(--gold);
+    color: var(--green);
+    padding: 10px 17px;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+.menu-toggle {
+    display: none;
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 27px;
+}
+
+main > section {
+    display: none;
+    min-height: 75vh;
+    animation: fadeIn .35s ease;
+}
+
+main > section.active-page {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hero {
+    min-height: 80vh;
+    background:
+        linear-gradient(90deg, #102c25e8, #102c2570),
+        url("https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=2000&q=85");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    padding: 80px 10%;
+    color: white;
+}
+
+.hero-content {
+    max-width: 680px;
+}
+
+.eyebrow {
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+h1, h2, h3 {
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 1.2;
+}
+
+.hero h1 {
+    font-size: clamp(43px, 6vw, 76px);
+    margin-bottom: 22px;
+}
+
+.hero p {
+    max-width: 560px;
+    margin-bottom: 30px;
+    color: #f0eee7;
+}
+
+.btn {
+    display: inline-block;
+    border: 1px solid var(--gold);
+    background: var(--gold);
+    color: var(--green);
+    padding: 12px 24px;
+    font-weight: bold;
+    border-radius: 3px;
+    transition: .3s;
+}
+
+.btn:hover {
+    background: transparent;
+    color: var(--gold);
+}
+
+.btn-outline {
+    background: transparent;
+    color: white;
+    margin-left: 10px;
+}
+
+.section {
+    padding: 75px 8%;
+}
+
+.section-heading {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 45px;
+}
+
+.section-heading h1,
+.section-heading h2 {
+    color: var(--green);
+    font-size: clamp(32px, 4vw, 46px);
+    margin-bottom: 15px;
+}
+
+.section-heading p {
+    color: var(--muted);
+}
+
+.two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.two-column img {
+    height: 430px;
+    border-radius: 5px;
+}
+
+.content h2 {
+    color: var(--green);
+    font-size: 38px;
+    margin-bottom: 20px;
+}
+
+.content p {
+    color: var(--muted);
+    margin-bottom: 18px;
+}
+
+.gold-line {
+    width: 65px;
+    height: 3px;
+    background: var(--gold);
+    margin: 20px 0;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 28px;
+}
+
+.stat {
+    border-left: 2px solid var(--gold);
+    padding-left: 13px;
+}
+
+.stat strong {
+    display: block;
+    font-size: 25px;
+    color: var(--green);
+    font-family: Georgia, serif;
+}
+
+.stat span {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.card {
+    background: white;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px #0000000b;
+    transition: transform .3s, box-shadow .3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px #00000012;
+}
+
+.card img {
+    height: 230px;
+}
+
+.card-content {
+    padding: 22px;
+}
+
+.card h3 {
+    color: var(--green);
+    font-size: 23px;
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.price {
+    color: #9b7835;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.tag {
+    display: inline-block;
+    color: var(--green);
+    background: #e9eee8;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    margin-bottom: 12px;
+}
+
+.menu-categories {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 35px;
+}
+
+.menu-categories span {
+    border: 1px solid #d6c8a5;
+    padding: 8px 18px;
+    color: var(--green);
+    border-radius: 3px;
+    font-size: 13px;
+}
+
+.dark-section {
+    background: var(--green);
+    color: white;
+}
+
+.dark-section .section-heading h2,
+.dark-section .content h2 {
+    color: white;
+}
+
+.dark-section .section-heading p,
+.dark-section .content p {
+    color: #d7ded8;
+}
+
+.dark-section .card {
+    color: var(--text);
+}
+
+.page-banner {
+    padding: 70px 8%;
+    text-align: center;
+    background:
+        linear-gradient(#173c32d9, #173c32d9),
+        url("https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1600&q=80");
+    background-position: center;
+    background-size: cover;
+    color: white;
+}
+
+.page-banner h1 {
+    font-size: clamp(36px, 5vw, 54px);
+    margin-bottom: 12px;
+}
+
+.page-banner p {
+    color: #eee9dd;
+}
+
+.form-box {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 35px;
+    border-radius: 5px;
+    box-shadow: 0 5px 25px #0000000b;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.form-group.full {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    color: var(--green);
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    border: 1px solid #deded5;
+    padding: 12px;
+    border-radius: 3px;
+    outline: none;
+    background: #fffefa;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--gold);
+}
+
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.form-box .btn {
+    margin-top: 22px;
+    border: none;
+}
+
+.chef-card img {
+    height: 320px;
+    object-position: top;
+}
+
+.chef-card .card-content {
+    text-align: center;
+}
+
+.chef-card small {
+    color: #9b7835;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.gallery-grid img {
+    height: 260px;
+    border-radius: 4px;
+    transition: transform .3s;
+}
+
+.gallery-grid img:hover {
+    transform: scale(1.02);
+}
+
+.offer-card {
+    background: var(--green);
+    color: white;
+    padding: 35px;
+    border: 1px solid var(--gold);
+    text-align: center;
+    border-radius: 4px;
+}
+
+.offer-card h3 {
+    color: var(--gold);
+    font-size: 27px;
+    margin-bottom: 15px;
+}
+
+.offer-card p {
+    margin-bottom: 20px;
+    color: #e2e5df;
+}
+
+.offer-card .btn {
+    display: inline-block;
+}
+
+.event-card img {
+    height: 240px;
+}
+
+.review-card {
+    background: white;
+    padding: 28px;
+    border-left: 3px solid var(--gold);
+    box-shadow: 0 5px 20px #0000000b;
+}
+
+.stars {
+    color: #b18b42;
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+}
+
+.review-card p {
+    color: var(--muted);
+    margin-bottom: 18px;
+    font-style: italic;
+}
+
+.review-card h3 {
+    font-size: 19px;
+    color: var(--green);
+}
+
+.faq-list {
+    max-width: 850px;
+    margin: auto;
+}
+
+.faq-item {
+    border-bottom: 1px solid #ded8c8;
+    padding: 20px 0;
+}
+
+.faq-item h3 {
+    font-size: 21px;
+    color: var(--green);
+    margin-bottom: 8px;
+}
+
+.faq-item p {
+    color: var(--muted);
+}
+
+.visit-box {
+    background: white;
+    padding: 30px;
+    border-radius: 5px;
+}
+
+.visit-box h3 {
+    color: var(--green);
+    margin-bottom: 12px;
+}
+
+.visit-box p {
+    margin-bottom: 10px;
+    color: var(--muted);
+}
+
+.contact-layout {
+    display: grid;
+    grid-template-columns: .8fr 1.2fr;
+    gap: 35px;
+    align-items: start;
+}
+
+.contact-info {
+    background: var(--green);
+    color: white;
+    padding: 30px;
+    border-radius: 5px;
+}
+
+.contact-info h3 {
+    color: var(--gold);
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.contact-info p {
+    margin-bottom: 18px;
+    color: #e2e5df;
+}
+
+footer {
+    background: #102b24;
+    color: white;
+    padding: 45px 8% 20px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 35px;
+    margin-bottom: 30px;
+}
+
+footer h3 {
+    color: var(--gold);
+    margin-bottom: 15px;
+    font-size: 21px;
+}
+
+footer p, footer a {
+    color: #d5ddd6;
+    font-size: 14px;
+}
+
+footer a {
+    display: block;
+    margin-bottom: 7px;
+}
+
+footer a:hover {
+    color: var(--gold);
+}
+
+.footer-bottom {
+    border-top: 1px solid #ffffff24;
+    padding-top: 18px;
+    text-align: center;
+    color: #c4cec6;
+    font-size: 12px;
+}
+
+@media (max-width: 1050px) {
+    header {
+        padding: 15px 5%;
+    }
+
+    nav {
+        gap: 12px;
+    }
+
+    nav a {
+        font-size: 12px;
+    }
+
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 760px) {
+    header {
+        flex-wrap: wrap;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    nav {
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        gap: 0;
+        padding: 10px 0;
+    }
+
+    nav.show {
+        display: flex;
+    }
+
+    nav a {
+        padding: 10px 5px;
+        font-size: 14px;
+    }
+
+    .nav-button {
+        text-align: center;
+        margin-top: 5px;
+    }
+
+    .hero {
+        min-height: 75vh;
+        padding: 60px 7%;
+    }
+
+    .hero h1 {
+        font-size: 44px;
+    }
+
+    .section {
+        padding: 55px 6%;
+    }
+
+    .two-column,
+    .contact-layout {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .two-column img {
+        height: 300px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .gallery-grid img {
+        height: 180px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-group.full {
+        grid-column: auto;
+    }
+
+    .form-box {
+        padding: 23px;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .stats {
+        gap: 8px;
+    }
+
+    .stat strong {
+        font-size: 21px;
+    }
+}
+
+@media (max-width: 400px) {
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero .btn {
+        display: block;
+        width: fit-content;
+        margin: 10px 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <a href="#home" class="logo">
+        SAVORA
+        <span>FINE DINING</span>
+    </a>
+
+    <button class="menu-toggle" id="menuToggle"
+        aria-label="Toggle navigation"
+        aria-expanded="false">☰</button>
+
+    <nav id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#menu">Menu</a>
+        <a href="#chefs">Our Chefs</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#offers">Offers</a>
+        <a href="#events">Events</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact" class="nav-button">Contact Us</a>
+    </nav>
+</header>
+
+<main>
+
+<!-- HOME PAGE -->
+<section id="home" class="active-page">
+    <div class="hero">
+        <div class="hero-content">
+            <p class="eyebrow">Welcome to Savora</p>
+            <h1>An Extraordinary Dining Experience</h1>
+            <p>
+                Discover the perfect blend of exquisite flavours,
+                elegant surroundings, and warm hospitality.
+                Every meal is a moment worth remembering.
+            </p>
+            <a href="#menu" class="btn">Explore Our Menu</a>
+            <a href="#reservations" class="btn btn-outline">Book a Table</a>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="two-column">
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1000&q=80"
+                 alt="Elegant restaurant interior">
+
+            <div class="content">
+                <p class="eyebrow">The Savora Story</p>
+                <h2>Where Taste Meets Elegance</h2>
+                <div class="gold-line"></div>
+                <p>
+                    At Savora, we believe dining is more than just food.
+                    It is about creating memories, sharing conversations,
+                    and enjoying beautiful moments with the people you love.
+                </p>
+                <p>
+                    Our chefs combine fresh ingredients, thoughtful
+                    preparation, and creative presentation to bring
+                    something special to your table.
+                </p>
+                <a href="#about" class="btn">Discover Our Story</a>
+
+                <div class="stats">
+                    <div class="stat">
+                        <strong>10+</strong>
+                        <span>Years of Passion</span>
+                    </div>
+                    <div class="stat">
+                        <strong>25+</strong>
+                        <span>Signature Dishes</span>
+                    </div>
+                    <div class="stat">
+                        <strong>5★</strong>
+                        <span>Dining Experience</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section dark-section">
+        <div class="section-heading">
+            <p class="eyebrow">Our Favourites</p>
+            <h2>Signature Dishes</h2>
+            <p>A few delicious highlights from our kitchen.</p>
+        </div>
+
+        <div class="cards">
+            <article class="card">
+                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80"
+                     alt="Grilled steak">
+                <div class="card-content">
+                    <span class="tag">Chef's Special</span>
+                    <h3>Herb-Grilled Steak</h3>
+                    <p>Juicy grilled steak with herbs and seasonal vegetables.</p>
+                    <span class="price">Rs. 2,450</span>
+                </div>
+            </article>
+
+            <article class="card">
+                <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=800&q=80"
+                     alt="Fresh pasta">
+                <div class="card-content">
+                    <span class="tag">Guest Favourite</span>
+                    <h3>Creamy Garden Pasta</h3>
+                    <p>Rich, creamy pasta with fresh herbs and parmesan.</p>
+                    <span class="price">Rs. 1,450</span>
+                </div>
+            </article>
+
+            <article class="card">
+                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=800&q=80"
+                     alt="Fresh pizza">
+                <div class="card-content">
+                    <span class="tag">Popular Choice</span>
+                    <h3>Classic Savora Pizza</h3>
+                    <p>A crispy base topped with cheese and fresh ingredients.</p>
+                    <span class="price">Rs. 1,650</span>
+                </div>
+            </article>
+        </div>
+
+        <div style="text-align:center; margin-top:35px;">
+            <a href="#menu" class="btn">View Full Menu</a>
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT PAGE -->
+<section id="about">
+    <div class="page-banner">
+        <p class="eyebrow">Get to Know Us</p>
+        <h1>Our Story</h1>
+        <p>A passion for exceptional food and unforgettable moments.</p>
+    </div>
+
+    <div class="section">
+        <div class="two-column">
+            <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1000&q=80"
+                 alt="Chef preparing a dish">
+
+            <div class="content">
+                <p class="eyebrow">Our Philosophy</p>
+                <h2>Made with Passion, Served with Love</h2>
+                <div class="gold-line"></div>
+                <p>
+                    Savora was created with a simple idea: good food brings
+                    people together. We aim to create a welcoming space
+                    where every guest feels special.
+                </p>
+                <p>
+                    From selecting ingredients to presenting each dish,
+                    we focus on flavour, quality, and attention to detail.
+                </p>
+                <p>
+                    Whether you are enjoying a quiet dinner, celebrating
+                    a birthday, or meeting friends, we want your visit
+                    to feel memorable.
+                </p>
+                <a href="#reservations" class="btn">Visit Savora</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="section dark-section">
+        <div class="section-heading">
+            <p class="eyebrow">What Matters to Us</p>
+            <h2>Our Values</h2>
+        </div>
+
+        <div class="cards">
+            <div class="card">
+                <div class="card-content">
+                    <h3>Quality</h3>
+                    <p>We focus on thoughtful preparation and carefully selected ingredients.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-content">
+                    <h3>Hospitality</h3>
+                    <p>We want every guest to feel welcome, comfortable, and appreciated.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-content">
+                    <h3>Creativity</h3>
+                    <p>We bring fresh ideas and a personal touch to our dining experience.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- MENU PAGE -->
+<section id="menu">
+    <div class="page-banner">
+        <p class="eyebrow">Discover Our Flavours</p>
+        <h1>Our Menu</h1>
+        <p>Thoughtfully prepared dishes for every occasion.</p>
+    </div>
+
+    <div class="section">
+        <div class="section-heading">
+            <h2>Made to Delight</h2>
+            <p>Explore some of Savora's favourite dishes.</p>
+        </div>
+
+        <div class="menu-categories">
+            <span>Starters</span>
+            <span>Main Course</span>
+            <span>Pasta & Pizza</span>
+            <span>Desserts</span>
+            <span>Beverages</span>
+        </div>
+
+        <div class="cards">
+            <article class="card">
+                <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=80"
+                     alt="Fresh salad">
+                <div class="card-content">
+                    <h3>Garden Fresh Salad</h3>
+                    <p>Crisp greens, seasonal vegetables, and house dressing.</p>
+                    <span class="price">Rs. 750</span>
+                </div>
+            </article>
+
+            <article class="card">
+                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80"
+                     alt="Grilled steak">
+                <div class="card-content">
+                    <h3>Herb-Grilled Steak</h3>
+                    <p>Grilled steak served with vegetables and signature sauce.</p>
+                    <span class="price">Rs. 2,450</span>
+                </div>
+            </article>
+
+            <article class="card">
+                <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=800&q=80"
+                     alt="Pasta">
+                <div class="card-content">
+                    <h3>Creamy Alfredo Pasta</h3>
+                    <p>Pasta tossed in a creamy sauce with herbs and parmesan.</p>
+                    <span class="price">Rs. 1,450</span>
+                </div>
+            </article>
+
+            <article class="card">
+                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=800&q=80"
+                     alt="Pizza">
+                <div class="card-content">
+                    <h3>Classic Cheese Pizza</h3>
+                    <p>A golden crust topped with tomato sauce and melted cheese.</p>
+                    <span class="price">Rs. 1,350</span>
+                </div>
+            </article>
+
+            <article class="card">
+                <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=800&q=80"
+                     alt="Dessert">
+                <div class="card-content">
+                    <h3>Chocolate Dessert</h3>
+                    <p>A rich chocolate treat for a sweet ending.</p>
+                    <span class="price">Rs. 650</span>
+                </div>
+            </article>
+
+            <article class="card">
+                <img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=800&q=80"
+                     alt="Coffee">
+                <div class="card-content">
+                    <h3>Signature Coffee</h3>
+                    <p>Freshly prepared coffee with a smooth, rich flavour.</p>
+                    <span class="price">Rs. 450</span>
+                </div>
+            </article>
+        </div>
+
+        <p style="text-align:center; margin-top:30px; color:#777970; font-size:13px;">
+            Prices shown are sample prices for this website project.
+        </p>
+    </div>
+</section>
+
+<!-- RESERVATIONS PAGE -->
+<section id="reservations">
+    <div class="page-banner">
+        <p class="eyebrow">Your Table Awaits</p>
+        <h1>Make a Reservation</h1>
+        <p>Plan your next memorable dining experience with us.</p>
+    </div>
+
+    <div class="section">
+        <div class="section-heading">
+            <h2>Book Your Table</h2>
+            <p>Complete the form to submit a sample reservation request.</p>
+        </div>
+
+        <form class="form-box demo-form">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="resName">Full Name</label>
+                    <input id="resName" name="name" type="text" placeholder="Your name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="resEmail">Email Address</label>
+                    <input id="resEmail" name="email" type="email" placeholder="you@example.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="resPhone">Phone Number</label>
+                    <input id="resPhone" name="phone" type="tel" placeholder="Your phone number" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="resGuests">Number of Guests</label>
+                    <select id="resGuests" name="guests" required>
+                        <option value="">Select guests</option>
+                        <option>1 Guest</option>
+                        <option>2 Guests</option>
+                        <option>3 Guests</option>
+                        <option>4 Guests</option>
+                        <option>5 Guests</option>
+                        <option>6 Guests</option>
+                        <option>7+ Guests</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="resDate">Reservation Date</label>
+                    <input id="resDate" name="date" type="date" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="resTime">Reservation Time</label>
+                    <select id="resTime" name="time" required>
+                        <option value="">Select time</option>
+                        <option>12:00 PM</option>
+                        <option>1:00 PM</option>
+                        <option>2:00 PM</option>
+                        <option>5:00 PM</option>
+                        <option>6:00 PM</option>
+                        <option>7:00 PM</option>
+                        <option>8:00 PM</option>
+                        <option>9:00 PM</option>
+                    </select>
+                </div>
+
+                <div class="form-group full">
+                    <label for="resMessage">Special Requests</label>
+                    <textarea id="resMessage" name="message"
+                        placeholder="Birthday celebration, seating preferences, etc."></textarea>
+                </div>
+            </div>
+
+            <button type="submit" class="btn">Submit Reservation</button>
+        </form>
+    </div>
+</section>
+
+<!-- CHEFS PAGE -->
+<section id="chefs">
+    <div class="page-banner">
+        <p class="eyebrow">The People Behind the Flavours</p>
+        <h1>Meet Our Chefs</h1>
+        <p>Passion, skill, and creativity in every dish.</p>
+    </div>
+
+    <div class="section">
+        <div class="section-heading">
+            <h2>Our Culinary Team</h2>
+            <p>Meet the talented team bringing our kitchen to life.</p>
+        </div>
+
+        <div class="cards">
+            <article class="card chef-card">
+                <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=800&q=80"
+                     alt="Head chef">
+                <div class="card-content">
+                    <h3>Chef Alexander</h3>
+                    <small>Executive Chef</small>
+                    <p>Leads the kitchen with a passion for balanced flavours and elegant presentation.</p>
+                </div>
+            </article>
+
+            <article class="card chef-card">
+                <img src="https://images.unsplash.com/photo-1583394293214-28ded15ee548?auto=format&fit=crop&w=800&q=80"
+                     alt="Sous chef">
+                <div class="card-content">
+                    <h3>Chef Olivia</h3>
+                    <small>Sous Chef</small>
+                    <p>Brings creativity and attention to detail to every plate.</p>
+                </div>
+            </article>
+
+            <article class="card chef-card">
+                <img src="https://images.unsplash.com/photo-1574966739987-65e38c4c9d63?auto=format&fit=crop&w=800&q=80"
+                     alt="Pastry chef">
+                <div class="card-content">
+                    <h3>Chef Daniel</h3>
+                    <small>Pastry Chef</small>
+                    <p>Creates delicious desserts inspired by classic and modern techniques.</p>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- GALLERY PAGE -->
+<section id="gallery">
+    <div class="page-banner">
+        <p class="eyebrow">A Glimpse of Savora</p>
+        <h1>Our Gallery</h1>
+        <p>Beautiful food, elegant spaces, and memorable moments.</p>
+    </div>
+
+    <div class="section">
+        <div class="section-heading">
+            <h2>Moments at Savora</h2>
+            <p>Explore the atmosphere and flavours that make dining special.</p>
+        </div>
+
+        <div class="gallery-grid">
+            <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=800&q=80" alt="Fine dining table">
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80" alt="Restaurant interior">
+            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80" alt="Grilled food">
+            <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=800&q=80" alt="Pasta dish">
+            <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=800&q=80" alt="Fresh pizza">
+            <img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=800&q=80" alt="Coffee">
+            <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=800&q=80" alt="Sweet dessert">
+            <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=800&q=80" alt="Chef at work">
+            <img src="https://images.unsplash.com/photo-1515003197210-e0cd7184f8b5?auto=format&fit=crop&w=800&q=80" alt="Beautifully prepared meal">
+        </div>
+    </div>
+</section>
+
+<!-- OFFERS PAGE -->
+<section id="offers">
+    <div class="page-banner">
+        <p class="eyebrow">Something Special for You</p>
+        <h1>Special Offers</h1>
+        <p>Make your dining experience even more delightful.</p>
+    </div>
+
+    <div class="section">
+        <div class="section-heading">
+            <h2>Enjoy More at Savora</h2>
+            <p>Sample promotions designed for this restaurant website project.</p>
+        </div>
+
+        <div class="cards">
+            <div class="offer-card">
+                <p class="eyebrow">Weekday Special</p>
+                <h3>15% Off</h3>
+                <p>Enjoy a special discount on selected weekday dining orders.</p>
+                <a href="#reservations" class="btn">Reserve a Table</a>
+            </div>
+
+            <div class="offer-card">
+                <p class="eyebrow">For Two</p>
+                <h3>Couple's Dinner</h3>
+                <p>Make an evening special with a thoughtfully prepared dinner for two.</p>
+                <a href="#reservations" class="btn">Book Your Dinner</a>
+            </div>
+
+            <div class="offer-card">
+                <p class="eyebrow">Celebrations</p>
+                <h3>Birthday Treat</h3>
+                <p>Celebrate your special day with friends, family, and delicious food.</p>
+                <a href="#events" class="btn">Plan an Event</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- EVENTS PAGE -->
+<section id="events">
+    <div class="page-banner">
+        <p class="eyebrow">Celebrate with Us</p>
+        <h1>Events at Savora</h1>
+        <p>A welcoming setting for your special occasions.</p>
+    </div>
+
+    <div class="section">
+        <div class="section-heading">
+            <h2>Make Every Occasion Special</h2>
+            <p>From intimate gatherings to joyful celebrations, we can help you plan your event.</p>
+        </div>
+
+        <div class="cards">
+            <article class="card event-card">
+                <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=800&q=80"
+                     alt="Celebration dinner">
+                <div class="card-content">
+                    <h3>Birthday Celebrations</h3>
+                    <p>Celebrate another year with great food and your favourite people.</p>
+                    <a href="#contact" class="btn">Enquire Now</a>
+                </div>
+            </article>
+
+            <article class="card event-card">
+                <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=800&q=80"
+                     alt="Private event table">
+                <div class="card-content">
+                    <h3>Private Dining</h3>
+                    <p>Enjoy a more personal atmosphere for family and friends.</p>
+                    <a href="#contact" class="btn">Enquire Now</a>
+                </div>
+            </article>
+
+            <article class="card event-card">
+                <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80"
+                     alt="Corporate event">
+                <div class="card-content">
+                    <h3>Corporate Gatherings</h3>
+                    <p>Bring colleagues together for a relaxed and memorable occasion.</p>
+                    <a href="#contact" class="btn">Enquire Now</a>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- REVIEWS PAGE -->
+<section id="reviews">
+    <div class="page-banner">
+        <p class="eyebrow">Words from Our Guests</p>
+        <h1>Guest Reviews</h1>
+        <p>Every visit and every experience matters to us.</p>
+    </div>
+
+    <div class="section">
+        <div class="section-heading">
+            <h2>What Guests Might Say</h2>
+            <p>These are example reviews for the website demonstration, not verified customer testimonials.</p>
+        </div>
+
+        <div class="cards">
+            <article class="review-card">
+                <div class="stars">★★★★★</div>
+                <p>"A beautiful atmosphere and delicious food. The presentation was lovely, and the staff were welcoming."</p>
+                <h3>Sarah Ahmed</h3>
+            </article>
+
+            <article class="review-card">
+                <div class="stars">★★★★★</div>
+                <p>"A wonderful place for dinner with family. The menu has something for everyone."</p>
+                <h3>Usman Khan</h3>
+            </article>
+
+            <article class="review-card">
+                <div class="stars">★★★★★</div>
+                <p>"Elegant surroundings, good flavours, and a relaxed dining experience. Would love to visit again."</p>
+                <h3>Ayesha Malik</h3>
+            </article>
+        </div>
+
+        <div style="text-align:center; margin-top:35px;">
+            <a href="#review-form-section" class="btn">Leave a Review</a>
+        </div>
+    </div>
+</section>
+
+<!-- REVIEW FORM PAGE -->
+<section id="review-form-section">
+    <div class="page-banner">
+        <p class="eyebrow">Share Your Experience</p>
+        <h1>Leave a Review</h1>
+        <p>Tell us what you enjoyed about your visit.</p>
+    </div>
+
+    <div class="section">
+        <div class="section-heading">
+            <h2>Your Feedback Matters</h2>
+            <p>Complete the form below to try the review form.</p>
+        </div>
+
+        <form class="form-box demo-form">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="reviewName">Your Name</label>
+                    <input id="reviewName" name="name" type="text" placeholder="Enter your name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="reviewRating">Your Rating</label>
+                    <select id="reviewRating" name="rating" required>
+                        <option value="">Select a rating</option>
+                        <option>5 - Excellent</option>
+                        <option>4 - Very Good</option>
+                        <option>3 - Good</option>
+                        <option>2 - Fair</option>
+                        <option>1 - Poor</option>
+                    </select>
+                </div>
+
+                <div class="form-group full">
+                    <label for="reviewText">Your Review</label>
+                    <textarea id="reviewText" name="review"
+                        placeholder="Write about your experience..." required></textarea>
+                </div>
+            </div>
+
+            <button type="submit" class="btn">Submit Review</button>
+        </form>
+    </div>
+</section>
+
+<!-- FAQ PAGE -->
+<section id="faq">
+    <div class="page-banner">
+        <p class="eyebrow">Need Help?</p>
+        <h1>Frequently Asked Questions</h1>
+        <p>Find answers to common questions about Savora.</p>
+    </div>
+
+    <div class="section">
+        <div class="faq-list">
+            <div class="faq-item">
+                <h3>1. Do I need to make a reservation?</h3>
+                <p>Reservations are recommended, especially for weekends and special occasions. You can use our reservation form to submit a request.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>2. Do you offer vegetarian dishes?</h3>
+                <p>Our sample menu includes vegetarian-friendly options. Please contact the restaurant to confirm available dishes.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>3. Can I arrange a birthday celebration?</h3>
+                <p>Yes, you can contact us with your preferred date, number of guests, and celebration details.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>4. Can I book a table for a large group?</h3>
+                <p>Use the contact form to ask about group dining and private event arrangements.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>5. How can I contact Savora?</h3>
+                <p>You can use the Contact Us page to send a sample enquiry or find our demonstration contact information.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>6. Are the prices on this website real?</h3>
+                <p>No. The prices and contact details are demonstration content for a university frontend project.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- VISIT PAGE -->
+<section id="visit">
+    <div class="page-banner">
+        <p class="eyebrow">We Look Forward to Welcoming You</p>
+        <h1>Visit Savora</h1>
+        <p>Make time for good food and meaningful moments.</p>
+    </div>
+
+    <div class="section">
+        <div class="two-column">
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1000&q=80"
+                 alt="Restaurant dining area">
+
+            <div class="content">
+                <p class="eyebrow">Your Dining Destination</p>
+                <h2>A Place to Slow Down and Savour</h2>
+                <div class="gold-line"></div>
+                <p>
+                    Whether you're planning a casual lunch, a romantic dinner,
+                    or a family celebration, Savora is designed to make
+                    your dining experience feel special.
+                </p>
+                <p>
+                    Please use the sample contact details below as placeholders
+                    until you add the restaurant's actual location and opening hours.
+                </p>
+                <a href="#reservations" class="btn">Reserve a Table</a>
+            </div>
+        </div>
+
+        <div class="cards" style="margin-top:40px;">
+            <div class="visit-box">
+                <h3>Our Location</h3>
+                <p>Restaurant address to be added</p>
+                <p>Pakistan</p>
+            </div>
+
+            <div class="visit-box">
+                <h3>Opening Hours</h3>
+                <p>Monday – Sunday</p>
+                <p>12:00 PM – 10:00 PM (sample hours)</p>
+            </div>
+
+            <div class="visit-box">
+                <h3>Contact</h3>
+                <p>Phone: +92 300 0000000 (sample)</p>
+                <p>Email: hello@savora.example</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT PAGE -->
+<section id="contact">
+    <div class="page-banner">
+        <p class="eyebrow">We Would Love to Hear from You</p>
+        <h1>Contact Savora</h1>
+        <p>Questions, reservations, or special requests? Get in touch.</p>
+    </div>
+
+    <div class="section">
+        <div class="contact-layout">
+            <div class="contact-info">
+                <h3>Get in Touch</h3>
+                <p><strong>Address</strong><br>Restaurant address to be added, Pakistan</p>
+                <p><strong>Phone</strong><br>+92 300 0000000 (sample)</p>
+                <p><strong>Email</strong><br>hello@savora.example</p>
+                <p><strong>Opening Hours</strong><br>Daily, 12:00 PM – 10:00 PM (sample)</p>
+                <a href="#visit" class="btn">Visit Information</a>
+            </div>
+
+            <form class="form-box demo-form">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="contactName">Full Name</label>
+                        <input id="contactName" name="name" type="text" placeholder="Your name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contactEmail">Email Address</label>
+                        <input id="contactEmail" name="email" type="email" placeholder="you@example.com" required>
+                    </div>
+
+                    <div class="form-group full">
+                        <label for="contactSubject">Subject</label>
+                        <input id="contactSubject" name="subject" type="text" placeholder="How can we help?" required>
+                    </div>
+
+                    <div class="form-group full">
+                        <label for="contactMessage">Message</label>
+                        <textarea id="contactMessage" name="message"
+                            placeholder="Write your message here..." required></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-grid">
+        <div>
+            <a href="#home" class="logo">SAVORA</a>
+            <p style="margin-top:15px;">
+                Fine dining, thoughtful flavours, and memorable moments.
+                Welcome to Savora.
+            </p>
+        </div>
+
+        <div>
+            <h3>Quick Links</h3>
+            <a href="#home">Home</a>
+            <a href="#about">About Us</a>
+            <a href="#menu">Our Menu</a>
+            <a href="#reservations">Reservations</a>
+            <a href="#events">Events</a>
+        </div>
+
+        <div>
+            <h3>Contact Information</h3>
+            Aisha Chaudry
+            <p>Address: To be added</p>
+            <p>Phone: +92 300 0000000 </p>
+            <p>Email: hello@savora.example</p>
+            <a href="#contact" style="margin-top:10px;">Contact Us</a>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        © <span id="year"></span> Savora Restaurant. University project demonstration.
+    </div>
+</footer>
+
+<script>
+const navLinks = document.getElementById("navLinks");
+const menuToggle = document.getElementById("menuToggle");
+
+const pageSections = Array.from(
+    document.querySelectorAll("main > section")
+);
+
+// Set the current year in the footer.
+document.getElementById("year").textContent = new Date().getFullYear();
+
+// Set today's date as the earliest reservation date.
+const reservationDate = document.getElementById("resDate");
+
+if (reservationDate) {
+    const today = new Date();
+    const localToday = new Date(
+        today.getTime() - today.getTimezoneOffset() * 60000
+    ).toISOString().split("T")[0];
+
+    reservationDate.min = localToday;
+}
+
+// Open and close the mobile navigation.
+menuToggle.addEventListener("click", function () {
+    const isOpen = navLinks.classList.toggle("show");
+
+    menuToggle.setAttribute("aria-expanded", String(isOpen));
+    menuToggle.textContent = isOpen ? "✕" : "☰";
+});
+
+// Display only the selected section.
+function showPage(pageId, updateAddress = true) {
+    const target = document.getElementById(pageId);
+
+    if (!target || !pageSections.includes(target)) {
+        target = pageSections.find(section => section.id === "home");
+    }
+
+    if (!target) return;
+
+    pageSections.forEach(function (section) {
+        section.classList.toggle("active-page", section === target);
+    });
+
+    // Close the mobile navigation after selecting a page.
+    navLinks.classList.remove("show");
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.textContent = "☰";
+
+    // Update the address bar without using normal anchor scrolling.
+    if (updateAddress) {
+        history.pushState(null, "", "#" + target.id);
+    }
+
+    window.scrollTo({ top: 0, behavior: "auto" });
+}
+
+// Make links to main sections work like separate pages.
+document.addEventListener("click", function (event) {
+    const link = event.target.closest('a[href^="#"]');
+
+    if (!link) return;
+
+    const pageId = link.getAttribute("href").slice(1);
+    const targetSection = pageSections.find(
+        section => section.id === pageId
+    );
+
+    if (!targetSection) return;
+
+    event.preventDefault();
+    showPage(pageId);
+});
+
+// Make the browser Back and Forward buttons work.
+window.addEventListener("popstate", function () {
+    const pageId = window.location.hash.slice(1) || "home";
+    showPage(pageId, false);
+});
+
+// Show the page selected in the URL, or Home by default.
+const initialPage = window.location.hash.slice(1) || "home";
+const initialTarget = pageSections.some(
+    section => section.id === initialPage
+) ? initialPage : "home";
+
+showPage(initialTarget, false);
+
+// Demo forms: show a message but do not send or store information.
+document.querySelectorAll(".demo-form").forEach(function (form) {
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        alert(
+            "Thank you! This form is working as a frontend demo. " +
+            "To receive or save submissions, a backend or form service is needed."
+        );
+
+        form.reset();
+    });
+});
+</script>
+
+</body>
+</html>
